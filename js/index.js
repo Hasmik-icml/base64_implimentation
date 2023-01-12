@@ -11,10 +11,11 @@ function main() {
     let bit6 = [];
     let newData = "";
 
-    // console.log([...buffer]);
-    // console.log(1111, buffer[0].toString(2));
-    // console.log(1111, buffer[1].toString(2));
-    let t = 80 >> 2;
+    console.log([...buffer]);
+    console.log(1111, buffer[0].toString(2));
+    console.log(2222, (buffer[0] >> 2).toString(2)); // Get 6 bit, example 10001001 > 00100010
+    console.log(3333, ((buffer[0]&3) << 2 ).toString(2));
+    // let t = 80 >> 2;
     // let bits6_2 = 137 >> 6
     // console.log(44444, bits6_2.toString(2));
     // console.log(22222222222, t.toString(2));
@@ -22,15 +23,15 @@ function main() {
 
     for (let i = 0; i < buffer.length; i++) {
 
-      bit6.push(0b10 << 4 | buffer[i] >> 2);
+      // bit6.push(0b10 << 4 | buffer[i] >> 2);
 
-      // let bits6_1 = buffer[i] >> 2;
+      let bits6_1 = buffer[i] >> 2;
       // let bits6_2 = buffer[i] << 6 | buffer[i+1] >> 4
       // let bits6_3
       // let bits6_4
 
     }
-    console.log("bits=", bit6[1].toString(2));
+    // console.log("bits=", bit6[1].toString(2));
 
     const newBuffer = Buffer.from(bit6);
 
