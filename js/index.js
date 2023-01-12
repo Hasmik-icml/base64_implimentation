@@ -10,11 +10,21 @@ function main() {
   fs.readFile(path.join(__dirname, "golang_logo.png"), function (err, buffer) {
     let bit6 = [];
     let newData = "";
-
+    // console.log(buffer);
     console.log([...buffer]);
     console.log(1111, buffer[0].toString(2));
+    console.log(1111, buffer[1].toString(2));
     console.log(2222, (buffer[0] >> 2).toString(2)); // Get 6 bit, example 10001001 > 00100010
-    console.log(3333, ((buffer[0]&3) << 2 ).toString(2));
+    let new_value = (buffer[0] >> 2) << 2
+    // a[0] = (a[0] >> 2) | (1 << 6);
+    console.log(3333, (new_value.toString(2)));
+    console.log(4444, (((buffer[0] & 0x3) << 4  | (buffer[1] >> 4) ).toString(2)));
+                      //  ((data[i] & 0x3) << 4) | (data[i+1] >> 4)
+                      b3 = ((data[i+1] & 0xf) << 2) | (data[i+2] >> 6)
+
+                      // Get the last 6 bits of the third byte
+                      b4 = data[i+2] & 0x3f
+                  
     // let t = 80 >> 2;
     // let bits6_2 = 137 >> 6
     // console.log(44444, bits6_2.toString(2));
@@ -25,7 +35,7 @@ function main() {
 
       // bit6.push(0b10 << 4 | buffer[i] >> 2);
 
-      let bits6_1 = buffer[i] >> 2;
+      let bits6_1 = (buffer[i] >> 2) << 2; // 6bit + 2 empaty
       // let bits6_2 = buffer[i] << 6 | buffer[i+1] >> 4
       // let bits6_3
       // let bits6_4
